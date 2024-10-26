@@ -17,26 +17,6 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public Date getPublishedDate() {
-        return publishedDate;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
     @Override
     public String toString() {
         return "Book{" +

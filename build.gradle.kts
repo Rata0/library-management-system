@@ -25,3 +25,7 @@ tasks.test {
 application {
     mainClass = "org.example.App"
 }
+
+tasks.getByName("run", JavaExec::class) {
+    standardInput = System.`in`
+}

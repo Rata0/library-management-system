@@ -11,18 +11,6 @@ public class Reader {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     @Override
     public String toString() {
         return "Readers{" +
