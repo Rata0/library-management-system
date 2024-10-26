@@ -20,7 +20,7 @@ public class ReaderManager implements ReaderManagerInterface {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, email);
             preparedStatement.executeUpdate();
-            System.out.println("Пользователь успешно добавлен");
+            System.out.println("Пользователь успешно добавлен: " + name);
         } catch (SQLException e) {
             System.out.println("Произошла ошибка при добавление пользователя " + e.getMessage());
         }

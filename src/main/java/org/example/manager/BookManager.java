@@ -23,9 +23,9 @@ public class BookManager  implements BookManagerInterface {
             preparedStatement.setDate(3, new java.sql.Date(publishedDate.getTime()));
             preparedStatement.setString(4, isbn);
             preparedStatement.executeUpdate();
-            System.out.println("Книга успешно добавлена " + title);
+            System.out.println("Книга успешно добавлена: " + title);
         } catch (SQLException e) {
-            System.out.println("Ошибка при добавлении книги " + e.getMessage());
+            System.out.println("Ошибка при добавлении книги: " + e.getMessage());
         }
     }
 
@@ -45,9 +45,9 @@ public class BookManager  implements BookManagerInterface {
                 );
                 books.add(book);
             }
-            System.out.println("Получено книг " + books.size());
+            System.out.println("Получено книг: " + books.size());
         } catch (SQLException e) {
-            System.out.println("Ошибка при получении списка книг " + e.getMessage());
+            System.out.println("Ошибка при получении списка книг: " + e.getMessage());
         }
         return books;
     }
@@ -60,7 +60,7 @@ public class BookManager  implements BookManagerInterface {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                System.out.println("Найдена книга по названию " + title);
+                System.out.println("Найдена книга по названию: " + title);
                 return new Book(
                         rs.getInt("id"),
                         rs.getString("title"),
@@ -69,7 +69,7 @@ public class BookManager  implements BookManagerInterface {
                         rs.getString("isbn")
                 );
             } else {
-                System.out.println("Книга не найдена по названию " + title);
+                System.out.println("Книга не найдена по названию: " + title);
                 return null;
             }
         } catch (SQLException e) {
