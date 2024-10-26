@@ -36,12 +36,12 @@ public class DatabaseManager {
 
     public void addBook(String title, String author, Date publishedDate, String isbn) {
         String sql = "INSERT INTO books (title, author, published_date, isbn) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, title);
-            pstmt.setString(2, author);
-            pstmt.setDate(3, new java.sql.Date(publishedDate.getTime()));
-            pstmt.setString(4, isbn);
-            pstmt.executeUpdate();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, title);
+            preparedStatement.setString(2, author);
+            preparedStatement.setDate(3, new java.sql.Date(publishedDate.getTime()));
+            preparedStatement.setString(4, isbn);
+            preparedStatement.executeUpdate();
             System.out.println("Книга успешно добавлена " + title);
         } catch (SQLException e) {
             System.out.println("Ошибка при добавлении книги " + e.getMessage());
@@ -72,9 +72,9 @@ public class DatabaseManager {
 
     public Book findBookByTitle(String title) {
         String sql = "SELECT * FROM books WHERE title = ?";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, title);
-            ResultSet rs = pstmt.executeQuery();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, title);
+            ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
                 System.out.println("Найдена книга по названию " + title);
@@ -97,9 +97,9 @@ public class DatabaseManager {
 
     public void deleteBook(int id) {
         String sql = "DELETE FROM books WHERE id = ?";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
-            int count = pstmt.executeUpdate();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            int count = preparedStatement.executeUpdate();
 
             if (count > 0) {
                 System.out.println("Книга с ID " + id + " успешно удалена");
@@ -113,10 +113,10 @@ public class DatabaseManager {
 
     public void addReader(String name, String email) {
         String sql = "INSERT INTO readers (name, email) VALUES (?, ?)";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, name);
-            pstmt.setString(2, email);
-            pstmt.executeUpdate();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, email);
+            preparedStatement.executeUpdate();
             System.out.println("Пользователь успешно добавлен");
         } catch (SQLException e) {
             System.out.println("Произошла ошибка при добавление пользователя " + e.getMessage());
@@ -145,9 +145,9 @@ public class DatabaseManager {
 
     public Reader findReaderByEmail(String email) {
         String sql = "SELECT * FROM readers WHERE email = ?";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)){
-            pstmt.setString(1, email);
-            ResultSet rs = pstmt.executeQuery();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setString(1, email);
+            ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
                 System.out.println("Найден пользователь с почтой " + email);
@@ -168,9 +168,9 @@ public class DatabaseManager {
 
     public void deleteReader(int id) {
         String sql = "DELETE FROM readers WHERE id = ?";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
-            int count = pstmt.executeUpdate();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            int count = preparedStatement.executeUpdate();
 
             if (count > 0) {
                 System.out.println("Читатель с ID " + id + " успешно удален");
