@@ -1,4 +1,5 @@
 plugins {
+    id("application")
     id("java")
 }
 
@@ -19,4 +20,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+application {
+    mainClass = "org.example.App"
 }
