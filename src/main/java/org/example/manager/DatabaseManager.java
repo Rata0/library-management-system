@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class DatabaseManager implements DatabaseManagerInterface {
     private static final String URL = "jdbc:postgresql://localhost/library_db";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "12345";
+    private static final String USER = "";
+    private static final String PASSWORD = "";
     private Connection connection;
 
     @Override
