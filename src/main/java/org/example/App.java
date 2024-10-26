@@ -62,6 +62,14 @@ public class App {
                 case "8":
                     deleteReader(scanner);
                     break;
+
+                case "exit":
+                    System.out.println("Завершение работы...");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Неверная команда. Попробуйте снова.");
+                    break;
             }
         }
     }
@@ -76,6 +84,7 @@ public class App {
         System.out.println("6 - Список всех читателей");
         System.out.println("7 - Найти читателя по email");
         System.out.println("8 - Удалить читателя по ID");
+        System.out.println("exit - Заверешение сеанса");
     }
 
     private static void addBook(Scanner scanner) {
